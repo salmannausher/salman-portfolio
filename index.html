@@ -9,7 +9,7 @@
 <title>Salman Nausher — AI Systems Builder</title>
 <link rel="preconnect" href="https://fonts.googleapis.com">
 <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-<link href="https://fonts.googleapis.com/css2?family=Syne:wght@400;600;700;800&family=DM+Mono:wght@300;400;500&family=DM+Sans:ital,opsz,wght@0,9..40,300;0,9..40,400;0,9..40,500;1,9..40,300&display=swap" rel="stylesheet">
+<link href="https://fonts.googleapis.com/css2?family=Syne:wght@400;600;700;800&family=DM+Mono:wght@300;400;500&family=DM+Sans:ital,opsz,wght@0,9..40,300;0,9..40,400;0,9..40,500;1,9..40,300&family=Sacramento&display=swap" rel="stylesheet">
 <link href="https://assets.calendly.com/assets/external/widget.css" rel="stylesheet">
 <style>
 *,*::before,*::after{box-sizing:border-box;margin:0;padding:0;}
@@ -33,6 +33,7 @@ html{scroll-behavior:smooth;}
   --D:     'Syne', sans-serif;
   --B:     'DM Sans', sans-serif;
   --M:     'DM Mono', monospace;
+  --S:     'Sacramento', cursive;
   --r:     8px;
   --ease:  cubic-bezier(.22,1,.36,1);
 }
@@ -271,6 +272,33 @@ hr.rule{border:none;border-top:1px solid var(--b);}
 .tst-badge{font-family:var(--M);font-size:9px;letter-spacing:.08em;text-transform:uppercase;padding:4px 10px;border:1px solid var(--b);border-radius:100px;color:var(--t3);white-space:nowrap;}
 .tst-upwork-link{text-align:center;margin-top:24px;}
 
+/* ── FOUNDER / PERSONAL TRUST ── */
+#founder{background:var(--bg2);}
+.founder-wrap{display:grid;grid-template-columns:340px 1fr;gap:64px;align-items:start;}
+.founder-photo-col{display:flex;flex-direction:column;align-items:center;}
+.founder-card{position:relative;width:100%;aspect-ratio:3/3.4;border-radius:22px;background:var(--bg3);border:1px solid var(--b2);overflow:hidden;padding:32px;display:flex;flex-direction:column;align-items:center;justify-content:center;gap:22px;transform:perspective(900px) rotateX(0deg) rotateY(0deg);transition:transform .35s var(--ease),border-color .3s;will-change:transform;}
+.founder-card:hover{border-color:var(--b3);}
+.founder-card::before{content:'';position:absolute;inset:0;background-image:linear-gradient(var(--b) 1px,transparent 1px),linear-gradient(90deg,var(--b) 1px,transparent 1px);background-size:26px 26px;opacity:.6;pointer-events:none;}
+.founder-card::after{content:'';position:absolute;right:-50px;bottom:-50px;width:230px;height:230px;border-radius:50%;background:radial-gradient(circle,rgba(212,80,26,.32),transparent 72%);filter:blur(6px);pointer-events:none;transition:opacity .3s;}
+.founder-photo{position:relative;z-index:1;width:76%;aspect-ratio:1;border-radius:50%;overflow:hidden;border:3px solid var(--bg2);box-shadow:0 0 0 1px var(--b2),0 30px 60px -22px rgba(0,0,0,.65);flex-shrink:0;}
+.founder-photo img{width:100%;height:100%;object-fit:cover;display:block;filter:grayscale(.15) contrast(1.04);transition:filter .5s var(--ease),transform .6s var(--ease);}
+.founder-card:hover .founder-photo img{filter:grayscale(0) contrast(1.08);transform:scale(1.045);}
+.founder-badge{position:relative;z-index:1;font-family:var(--M);font-size:10px;letter-spacing:.12em;text-transform:uppercase;color:var(--t2);padding:8px 16px;border:1px solid var(--b2);border-radius:100px;background:rgba(255,255,255,.02);white-space:nowrap;}
+.founder-caption{margin-top:18px;text-align:center;font-family:var(--M);font-size:10px;letter-spacing:.14em;text-transform:uppercase;color:var(--t3);max-width:280px;}
+.founder-text-col h2{margin-top:14px;}
+.founder-p{font-size:16px;color:var(--t2);font-weight:300;line-height:1.85;margin-bottom:22px;max-width:600px;}
+.founder-p:last-of-type{margin-bottom:0;}
+.founder-p strong{color:var(--t);font-weight:400;}
+.founder-stats{display:grid;grid-template-columns:repeat(3,1fr);gap:1px;background:var(--b);border:1px solid var(--b);border-radius:10px;overflow:hidden;margin:32px 0 36px;}
+.fs-cell{background:var(--bg3);padding:20px 22px;transition:background .2s;}
+.fs-cell:hover{background:var(--bg4);}
+.fs-num{font-family:var(--D);font-size:clamp(22px,2.6vw,30px);font-weight:800;color:var(--ac);letter-spacing:-.02em;line-height:1;}
+.fs-lbl{font-family:var(--M);font-size:10px;letter-spacing:.08em;text-transform:uppercase;color:var(--t3);margin-top:8px;line-height:1.55;}
+.founder-sign{margin-bottom:28px;}
+.founder-sign-name{font-family:var(--S);font-size:40px;color:var(--t);line-height:1;}
+.founder-sign-role{font-family:var(--M);font-size:10px;letter-spacing:.12em;text-transform:uppercase;color:var(--t3);margin-top:6px;}
+.founder-cta{display:flex;gap:12px;flex-wrap:wrap;}
+
 /* ── BIG CTA ── */
 #bigcta{padding:140px 48px 120px;text-align:center;background:var(--bg);position:relative;overflow:hidden;}
 #bigcta::before{content:'';position:absolute;inset:0;background:radial-gradient(ellipse 50% 60% at 50% 100%, rgba(212,80,26,.07), transparent 70%);pointer-events:none;}
@@ -331,6 +359,8 @@ footer{padding:36px 48px;border-top:1px solid var(--b);position:relative;overflo
   .h-stat:last-child{border-right:none;}
   .story-wrap{grid-template-columns:1fr;gap:40px;}
   .story-sticky{position:static;}
+  .founder-wrap{grid-template-columns:1fr;gap:40px;}
+  .founder-photo-col{max-width:280px;margin:0 auto;}
   .contact-wrap{grid-template-columns:1fr;gap:48px;padding:72px 24px;}
   .foot-top{grid-template-columns:1fr 1fr;gap:28px;}
 }
@@ -829,6 +859,44 @@ footer{padding:36px 48px;border-top:1px solid var(--b);position:relative;overflo
 
 <hr class="rule">
 
+<!-- FOUNDER / PERSONAL TRUST -->
+<section id="founder" class="section">
+  <div class="s-in founder-wrap">
+    <div class="founder-photo-col fu">
+      <div class="founder-card" id="founderCard">
+        <div class="founder-photo"><img src="founder.png" alt="Salman Nausher, founder of Devsphinx" loading="lazy"></div>
+        <div class="founder-badge">Founder &nbsp;·&nbsp; AI Systems Architect</div>
+      </div>
+      <p class="founder-caption">Every project. Every line. One person accountable.</p>
+    </div>
+    <div class="founder-text-col fu fd1">
+      <span class="eyebrow eyebrow-ac">Who you'll work with</span>
+      <h2 class="split">You talk to the<br>person who builds it.</h2>
+      <p class="founder-p" style="margin-top:24px;">
+        There's no team behind this page pretending to be bigger than it is. When you book a call, <strong>you're talking to me</strong> — the person who scopes the system, designs the architecture, writes the code, and answers for the result. No account managers, no hand-offs, no junior dev learning on your budget.
+      </p>
+      <p class="founder-p">
+        I've spent four years shipping production software, and the last couple deep in the Claude ecosystem — agent architectures, MCP integrations, AI-first product design. I take on a small number of builds at a time, so everything that ships carries the standard this page promises.
+      </p>
+      <div class="founder-stats" data-stagger>
+        <div class="fs-cell"><div class="fs-num">24</div><div class="fs-lbl">Upwork contracts, start to finish</div></div>
+        <div class="fs-cell"><div class="fs-num">4.9<span style="color:var(--ac);">★</span></div><div class="fs-lbl">Average client rating</div></div>
+        <div class="fs-cell"><div class="fs-num">100<span style="color:var(--ac);">%</span></div><div class="fs-lbl">Job success score</div></div>
+      </div>
+      <div class="founder-sign">
+        <div class="founder-sign-name">Salman Nausher</div>
+        <div class="founder-sign-role">Founder, Devsphinx</div>
+      </div>
+      <div class="founder-cta">
+        <a href="#contact" class="btn btn-ac">Book a call with me &nbsp;→</a>
+        <a href="http://linkedin.com/in/snausher/" target="_blank" class="btn btn-ghost">LinkedIn</a>
+      </div>
+    </div>
+  </div>
+</section>
+
+<hr class="rule">
+
 <!-- BIG CTA -->
 <section id="bigcta">
   <a href="#contact" class="bigcta-link">
@@ -1008,6 +1076,19 @@ document.querySelectorAll('.spot').forEach(card=>{
     card.style.setProperty('--my',(e.clientY-r.top)+'px');
   });
 });
+
+/* ── Founder photo card tilt ── */
+if(!RM&&matchMedia('(hover:hover) and (pointer:fine)').matches){
+  const fCard=document.getElementById('founderCard');
+  if(fCard){
+    fCard.addEventListener('mousemove',e=>{
+      const r=fCard.getBoundingClientRect();
+      const px=(e.clientX-r.left)/r.width-.5,py=(e.clientY-r.top)/r.height-.5;
+      fCard.style.transform=`perspective(900px) rotateX(${(-py*10).toFixed(2)}deg) rotateY(${(px*12).toFixed(2)}deg)`;
+    });
+    fCard.addEventListener('mouseleave',()=>{fCard.style.transform='perspective(900px) rotateX(0deg) rotateY(0deg)';});
+  }
+}
 
 /* ── Magnetic buttons ── */
 if(!RM&&matchMedia('(hover:hover) and (pointer:fine)').matches){
