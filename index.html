@@ -259,18 +259,55 @@ hr.rule{border:none;border-top:1px solid var(--b);}
 .blog-cta{margin-top:24px;text-align:center;}
 .blog-cta p{font-size:14px;color:var(--t2);font-weight:300;margin-bottom:16px;}
 
-/* ── TESTIMONIALS ── */
+/* ── TESTIMONIALS — bento ── */
 #testimonials{background:var(--bg);}
-.tst-grid{display:grid;grid-template-columns:repeat(2,1fr);gap:1px;background:var(--b);border:1px solid var(--b);border-radius:10px;overflow:hidden;}
-.tst-card{background:var(--bg2);padding:40px;display:flex;flex-direction:column;justify-content:space-between;gap:24px;transition:background .2s;}.tst-card:hover{background:var(--bg3);}
-.tst-stars{font-size:16px;color:var(--ac);letter-spacing:2px;}
-.tst-quote{font-family:var(--D);font-size:clamp(15px,1.5vw,18px);font-weight:600;line-height:1.55;letter-spacing:-0.01em;color:var(--t);font-style:italic;position:relative;flex:1;}
-.tst-quote::before{content:'\201C';position:absolute;top:-18px;left:-4px;font-size:60px;color:var(--ac2);font-family:var(--D);line-height:1;pointer-events:none;}
-.tst-footer{display:flex;align-items:flex-end;justify-content:space-between;gap:16px;flex-wrap:wrap;margin-top:8px;padding-top:20px;border-top:1px solid var(--b);}
-.tst-name{font-family:var(--D);font-size:14px;font-weight:700;color:var(--t);letter-spacing:-0.01em;}
-.tst-role{font-family:var(--M);font-size:10px;letter-spacing:.1em;text-transform:uppercase;color:var(--t3);margin-top:4px;}
-.tst-badge{font-family:var(--M);font-size:9px;letter-spacing:.08em;text-transform:uppercase;padding:4px 10px;border:1px solid var(--b);border-radius:100px;color:var(--t3);white-space:nowrap;}
-.tst-upwork-link{text-align:center;margin-top:24px;}
+.tb-grid{display:grid;grid-template-columns:repeat(4,1fr);grid-auto-rows:minmax(150px,auto);gap:1px;background:var(--b);border:1px solid var(--b);border-radius:10px;overflow:hidden;align-items:stretch;}
+.tb-cell{background:var(--bg2);padding:32px;transition:background .2s;position:relative;}.tb-cell:hover{background:var(--bg3);}
+.tb-stars{font-size:15px;color:var(--ac);letter-spacing:2px;}
+.tb-quote{font-family:var(--D);font-weight:600;line-height:1.55;letter-spacing:-0.01em;color:var(--t);font-style:italic;}
+.tb-avatar{width:34px;height:34px;border-radius:50%;display:flex;align-items:center;justify-content:center;font-family:var(--D);font-weight:700;font-size:12px;color:#fff;flex-shrink:0;}
+.tb-av-sh{background:linear-gradient(135deg,#D4501A,#ff8a4d);}
+.tb-av-rf{background:linear-gradient(135deg,#8a4523,#D4501A);}
+.tb-av-ar{background:linear-gradient(135deg,#c23f12,#e97a3d);}
+.tb-name{font-family:var(--D);font-size:13.5px;font-weight:700;color:var(--t);letter-spacing:-0.01em;}
+.tb-role{font-family:var(--M);font-size:9.5px;letter-spacing:.08em;text-transform:uppercase;color:var(--t3);margin-top:3px;}
+
+/* featured — full quote, richest review */
+.tb-featured{grid-column:1/3;grid-row:1/3;display:flex;flex-direction:column;justify-content:space-between;gap:18px;}
+.tb-featured .tb-quote{font-size:clamp(16px,1.7vw,19px);flex:1;}
+.tb-featured-foot{display:flex;align-items:center;gap:12px;padding-top:18px;border-top:1px solid var(--b);}
+
+/* track record — one consolidated tile, not scattered stat boxes */
+.tb-stack{grid-column:3/4;grid-row:1/3;display:flex;flex-direction:column;justify-content:center;}
+.tb-stack .tb-eyebrow{font-family:var(--M);font-size:10px;letter-spacing:.1em;text-transform:uppercase;color:var(--ac);margin-bottom:4px;}
+.tb-stat-row{padding:12px 0;border-top:1px solid var(--b);}
+.tb-stat-row:first-of-type{border-top:none;padding-top:0;}
+.tb-stat-row .num{font-family:var(--D);font-weight:800;font-size:clamp(19px,2vw,23px);color:var(--t);letter-spacing:-.02em;line-height:1;}
+.tb-stat-row .num em{color:var(--ac);font-style:normal;}
+.tb-stat-row .lbl{font-family:var(--M);font-size:9px;letter-spacing:.05em;text-transform:uppercase;color:var(--t3);margin-top:5px;line-height:1.4;}
+
+/* CTA — mirrors the track-record tile, flagged as the action cell */
+.tb-cta{grid-column:4/5;grid-row:1/3;background:var(--ac2);border-top:2px solid var(--ac);display:flex;flex-direction:column;justify-content:space-between;}
+.tb-cta:hover{background:rgba(212,80,26,.2);}
+.tb-cta .tb-eyebrow{font-family:var(--M);font-size:10px;letter-spacing:.1em;text-transform:uppercase;color:var(--ac);}
+.tb-cta p{font-family:var(--D);font-weight:700;font-size:15px;line-height:1.4;color:var(--t);margin-top:10px;}
+.tb-cta a{font-family:var(--M);font-size:10px;letter-spacing:.06em;text-transform:uppercase;color:var(--ac);display:inline-flex;align-items:center;gap:5px;}
+
+/* secondary quotes — always centered, never squashed */
+.tb-half{grid-row:3/4;display:flex;align-items:center;gap:18px;}
+.tb-half-a{grid-column:1/3;}
+.tb-half-b{grid-column:3/5;}
+.tb-half .tb-quote{font-size:14px;}
+
+/* closer — full width, most breathing room */
+.tb-closer{grid-column:1/5;grid-row:4/5;display:flex;align-items:center;gap:20px;}
+.tb-closer .tb-quote{font-size:14.5px;flex:1;}
+
+@media(max-width:768px){
+  .tb-grid{grid-template-columns:1fr;}
+  .tb-featured,.tb-stack,.tb-cta,.tb-half-a,.tb-half-b,.tb-closer{grid-column:1/2;grid-row:auto;}
+  .tb-half,.tb-closer{flex-direction:column;align-items:flex-start;}
+}
 
 /* ── FOUNDER / PERSONAL TRUST ── */
 #founder{background:var(--bg2);}
@@ -369,7 +406,7 @@ footer{padding:36px 48px;border-top:1px solid var(--b);position:relative;overflo
   #hero{padding:88px 20px 64px;}
   .section{padding:72px 20px;}
   #bigcta{padding:96px 20px 80px;}
-  .what-grid,.proj-grid,.blog-grid,.stack-grid,.tst-grid{grid-template-columns:1fr;}
+  .what-grid,.proj-grid,.blog-grid,.stack-grid{grid-template-columns:1fr;}
   .up-grid{grid-template-columns:repeat(2,1fr);}
   .up-cell:nth-child(2){border-right:none;}
   .up-cell:nth-child(3){border-top:1px solid var(--b);}
@@ -800,59 +837,62 @@ footer{padding:36px 48px;border-top:1px solid var(--b);position:relative;overflo
       <h2 class="split">What clients say<br>after the work ships.</h2>
       <p>Every review below is verified on Upwork. All contracts rated 5.0★ — 100% job success across 24 jobs.</p>
     </div>
-    <div class="tst-grid" data-stagger>
+    <div class="tb-grid" data-stagger>
 
-      <div class="tst-card spot">
-        <div class="tst-stars">★★★★★</div>
-        <blockquote class="tst-quote">"Salman was an absolute superstar on this contract, working with a very challenging integration. He produced a top-notch end result, and showed tremendous skill and ability."</blockquote>
-        <div class="tst-footer">
-          <div class="tst-meta">
-            <div class="tst-name">Shaun Hughston</div>
-            <div class="tst-role">Patient Management System Integration</div>
+      <div class="tb-cell tb-featured spot">
+        <div>
+          <div class="tb-stars">★★★★★</div>
+          <blockquote class="tb-quote">"Salman was a professional from the start — always responsive, positive, and resilient on all the work assigned. It's been a pleasure to work with and we will for sure have him on the pipeline for future projects."</blockquote>
+        </div>
+        <div class="tb-featured-foot">
+          <div class="tb-avatar tb-av-ar">AR</div>
+          <div>
+            <div class="tb-name"><a href="https://www.linkedin.com/in/alexandra-radanovich" target="_blank" style="color:inherit;text-decoration:none;">Alex Radanovich</a></div>
+            <div class="tb-role">VP, PM &amp; Operations · Spherical · 5-yr · 3,027 hrs</div>
           </div>
-          <div class="tst-badge">Committed to Quality</div>
         </div>
       </div>
 
-      <div class="tst-card spot">
-        <div class="tst-stars">★★★★★</div>
-        <blockquote class="tst-quote">"Salman overperformed on this contract — highly skilled, very professional, and worked well within a tight timeframe. Highly recommended."</blockquote>
-        <div class="tst-footer">
-          <div class="tst-meta">
-            <div class="tst-name">Shaun Hughston</div>
-            <div class="tst-role">Payment Gateway Integration</div>
-          </div>
-          <div class="tst-badge">Professional · Reliable</div>
+      <div class="tb-cell tb-stack spot">
+        <div class="tb-eyebrow">Track record</div>
+        <div class="tb-stat-row"><div class="num">3,027 <em>hrs</em></div><div class="lbl">Logged on this one engagement</div></div>
+        <div class="tb-stat-row"><div class="num">4.9<em>★</em></div><div class="lbl">Average rating, 24 jobs</div></div>
+        <div class="tb-stat-row"><div class="num">100<em>%</em></div><div class="lbl">Job success score</div></div>
+      </div>
+
+      <div class="tb-cell tb-cta spot">
+        <div class="tb-eyebrow">Full history</div>
+        <p>Every contract, every rating — nothing cherry-picked.</p>
+        <a href="https://www.upwork.com/freelancers/~013284928954bf6f26" target="_blank">View all on Upwork →</a>
+      </div>
+
+      <div class="tb-cell tb-half tb-half-a spot">
+        <div class="tb-avatar tb-av-sh">SH</div>
+        <div>
+          <blockquote class="tb-quote">"Salman was an absolute superstar on this contract, working with a very challenging integration. He produced a top-notch end result, and showed tremendous skill and ability."</blockquote>
+          <div class="tb-name" style="margin-top:10px;">Shaun Hughston</div>
+          <div class="tb-role">CEO &amp; Founder, Agility Automation · Patient Management System Integration</div>
         </div>
       </div>
 
-      <div class="tst-card spot">
-        <div class="tst-stars">★★★★★</div>
-        <blockquote class="tst-quote">"Salman is a very talented and knowledgeable developer. He was an important part of the development team for several months and involved in almost all aspects of the project. High quality result. Highly recommend."</blockquote>
-        <div class="tst-footer">
-          <div class="tst-meta">
-            <div class="tst-name">Rusty Flick</div>
-            <div class="tst-role">Founder, Gomalu &nbsp;·&nbsp; Complex Web Application</div>
-          </div>
-          <div class="tst-badge">Committed to Quality</div>
+      <div class="tb-cell tb-half tb-half-b spot">
+        <div class="tb-avatar tb-av-sh">SH</div>
+        <div>
+          <blockquote class="tb-quote">"Salman overperformed on this contract — highly skilled, very professional, and worked well within a tight timeframe. Highly recommended."</blockquote>
+          <div class="tb-name" style="margin-top:10px;">Shaun Hughston</div>
+          <div class="tb-role">CEO &amp; Founder, Agility Automation · Payment Gateway Integration</div>
         </div>
       </div>
 
-      <div class="tst-card spot">
-        <div class="tst-stars">★★★★★</div>
-        <blockquote class="tst-quote">"Salman was a professional from the start — always responsive, positive, and resilient on all the work assigned. It's been a pleasure to work with and we will for sure have him on the pipeline for future projects."</blockquote>
-        <div class="tst-footer">
-          <div class="tst-meta">
-            <div class="tst-name"><a href="https://www.linkedin.com/in/alexandra-radanovich" target="_blank" style="color:var(--ac);text-decoration:none;">Alex Radanovich</a></div>
-            <div class="tst-role">VP, PM &amp; Operations · Spherical &nbsp;·&nbsp; 5-year engagement · 3,027 hrs</div>
-          </div>
-          <div class="tst-badge">Professional · Collaborative</div>
+      <div class="tb-cell tb-closer spot">
+        <div class="tb-avatar tb-av-rf">RF</div>
+        <div>
+          <blockquote class="tb-quote">"Salman is a very talented and knowledgeable developer. He was an important part of the development team for several months and involved in almost all aspects of the project. High quality result. Highly recommend."</blockquote>
+          <div class="tb-name" style="margin-top:10px;">Rusty Flick</div>
+          <div class="tb-role">Founder, Gomalu &nbsp;·&nbsp; Complex Web Application</div>
         </div>
       </div>
 
-    </div>
-    <div class="tst-upwork-link fu fd2">
-      <a href="https://www.upwork.com/freelancers/~013284928954bf6f26" target="_blank" class="btn btn-ghost">View all reviews on Upwork &nbsp;→</a>
     </div>
   </div>
 </section>
