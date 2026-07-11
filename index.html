@@ -309,6 +309,19 @@ hr.rule{border:none;border-top:1px solid var(--b);}
   .tb-half,.tb-closer{flex-direction:column;align-items:flex-start;}
 }
 
+/* ── VIDEO TESTIMONIAL ── */
+#video-testimonial{background:var(--bg2);}
+.vt-card{max-width:760px;border:1px solid var(--b);border-radius:10px;overflow:hidden;background:var(--bg3);}
+.vt-player{position:relative;aspect-ratio:16/9;background:#000;cursor:pointer;overflow:hidden;}
+.vt-thumb{width:100%;height:100%;object-fit:cover;display:block;filter:brightness(.7);transition:filter .3s,transform .5s var(--ease);}
+.vt-player:hover .vt-thumb{filter:brightness(.82);transform:scale(1.02);}
+.vt-tag{position:absolute;top:18px;left:18px;font-family:var(--M);font-size:10px;letter-spacing:.1em;text-transform:uppercase;color:var(--t);padding:5px 11px;border:1px solid var(--b2);border-radius:100px;background:rgba(7,7,7,.55);backdrop-filter:blur(6px);z-index:1;}
+.vt-play{position:absolute;top:50%;left:50%;transform:translate(-50%,-50%);width:72px;height:72px;border-radius:50%;background:var(--ac);border:none;cursor:pointer;transition:transform .25s var(--ease),box-shadow .25s;box-shadow:0 0 0 0 rgba(212,80,26,.35);}
+.vt-play::before{content:'';position:absolute;top:50%;left:52%;transform:translate(-50%,-50%);border-style:solid;border-width:11px 0 11px 19px;border-color:transparent transparent transparent #fff;}
+.vt-player:hover .vt-play{transform:translate(-50%,-50%) scale(1.08);box-shadow:0 0 0 14px rgba(212,80,26,.14);}
+.vt-iframe{width:100%;height:100%;border:0;display:block;}
+.vt-foot{display:flex;align-items:center;gap:14px;padding:22px 26px;border-top:1px solid var(--b);}
+
 /* ── FOUNDER / PERSONAL TRUST ── */
 #founder{background:var(--bg2);}
 .founder-wrap{display:grid;grid-template-columns:340px 1fr;gap:64px;align-items:start;}
@@ -899,6 +912,33 @@ footer{padding:36px 48px;border-top:1px solid var(--b);position:relative;overflo
 
 <hr class="rule">
 
+<!-- VIDEO TESTIMONIAL -->
+<section id="video-testimonial" class="section">
+  <div class="s-in">
+    <div class="s-hd fu">
+      <span class="eyebrow">In their words</span>
+      <h2 class="split">Hear it directly<br>from a client.</h2>
+      <p>Two minutes, unscripted — Shaun on what it was like working together.</p>
+    </div>
+    <div class="vt-card fu fd1">
+      <div class="vt-player" id="vtPlayer" data-video-id="cNoxcKFaYqU">
+        <span class="vt-tag">▶ &nbsp;Video testimonial</span>
+        <img class="vt-thumb" src="https://img.youtube.com/vi/cNoxcKFaYqU/maxresdefault.jpg" onerror="this.onerror=null;this.src='https://img.youtube.com/vi/cNoxcKFaYqU/hqdefault.jpg';" alt="Video testimonial from Shaun Hughston">
+        <button class="vt-play" aria-label="Play video testimonial from Shaun Hughston"></button>
+      </div>
+      <div class="vt-foot">
+        <div class="tb-avatar tb-av-sh">SH</div>
+        <div>
+          <div class="tb-name">Shaun Hughston</div>
+          <div class="tb-role">CEO &amp; Founder, Agility Automation</div>
+        </div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<hr class="rule">
+
 <!-- FOUNDER / PERSONAL TRUST -->
 <section id="founder" class="section">
   <div class="s-in founder-wrap">
@@ -1107,6 +1147,17 @@ const secObs=new IntersectionObserver(entries=>entries.forEach(e=>{
   navLinks.forEach(a=>a.classList.toggle('active',a.getAttribute('href')==='#'+e.target.id));
 }),{rootMargin:'-40% 0px -55% 0px'});
 navLinks.forEach(a=>{const s=document.querySelector(a.getAttribute('href'));if(s)secObs.observe(s);});
+
+/* ── Video testimonial: click-to-load facade ── */
+(function(){
+  const player = document.getElementById('vtPlayer');
+  if(!player) return;
+  player.addEventListener('click', function loadVideo(){
+    const id = player.dataset.videoId;
+    player.innerHTML = `<iframe class="vt-iframe" src="https://www.youtube-nocookie.com/embed/${id}?autoplay=1&rel=0" title="Client video testimonial" allow="autoplay; encrypted-media; picture-in-picture" allowfullscreen></iframe>`;
+    player.removeEventListener('click', loadVideo);
+  }, {once:true});
+})();
 
 /* ── Spotlight glow follows cursor on cards ── */
 document.querySelectorAll('.spot').forEach(card=>{
