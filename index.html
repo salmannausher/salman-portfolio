@@ -41,7 +41,7 @@ html{scroll-behavior:smooth;}
   --b3:    rgba(255,255,255,0.22);
   --t:     #F0EEE6;
   --t2:    #97948C;
-  --t3:    #464540;
+  --t3:    #7D7B72;
   --ac:    #D4501A;
   --ac2:   rgba(212,80,26,0.13);
   --ac3:   rgba(212,80,26,0.06);
@@ -57,6 +57,9 @@ html{scroll-behavior:smooth;}
 body{background:var(--bg);color:var(--t);font-family:var(--B);font-size:16px;line-height:1.7;-webkit-font-smoothing:antialiased;overflow-x:hidden;}
 a{color:inherit;text-decoration:none;}
 ::selection{background:var(--ac);color:#fff;}
+a:focus-visible,button:focus-visible,.blog-card:focus-visible,.spot:focus-visible{outline:2px solid var(--ac);outline-offset:3px;border-radius:2px;}
+.skip-link{position:absolute;top:-48px;left:16px;z-index:500;background:var(--ac);color:#fff;padding:10px 18px;border-radius:var(--r);font-family:var(--B);font-size:14px;font-weight:500;transition:top .2s;}
+.skip-link:focus{top:16px;}
 
 /* ── Film grain ── */
 body::after{content:'';position:fixed;inset:-100px;z-index:998;pointer-events:none;opacity:.032;background-image:url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='240' height='240'%3E%3Cfilter id='n'%3E%3CfeTurbulence type='fractalNoise' baseFrequency='0.85' numOctaves='2' stitchTiles='stitch'/%3E%3C/filter%3E%3Crect width='240' height='240' filter='url(%23n)'/%3E%3C/svg%3E");}
@@ -97,7 +100,7 @@ h1,h2,h3{font-family:var(--D);letter-spacing:-0.025em;line-height:1.06;}
 /* ── Buttons ── */
 .btn{display:inline-flex;align-items:center;gap:7px;font-family:var(--B);font-size:14px;font-weight:500;padding:12px 24px;border-radius:var(--r);border:none;cursor:pointer;transition:opacity .15s,transform .18s var(--ease),box-shadow .25s;white-space:nowrap;letter-spacing:.01em;will-change:transform;}
 .btn:active{transform:scale(.97);}
-.btn-ac{background:var(--ac);color:#fff;}.btn-ac:hover{opacity:.9;box-shadow:0 8px 32px rgba(212,80,26,.35);}
+.btn-ac{background:#C94C19;color:#fff;}.btn-ac:hover{opacity:.9;box-shadow:0 8px 32px rgba(212,80,26,.35);}
 .btn-ghost{background:transparent;color:var(--t2);border:1px solid var(--b2);}.btn-ghost:hover{color:var(--t);border-color:var(--b3);}
 .btn-sm{padding:9px 18px;font-size:13px;}
 
@@ -453,6 +456,7 @@ footer{padding:36px 48px;border-top:1px solid var(--b);position:relative;overflo
 </head>
 <body>
 
+<a href="#main" class="skip-link">Skip to content</a>
 <div id="progress"></div>
 <div class="cur-dot" id="curDot"></div>
 <div class="cur-ring" id="curRing"></div>
@@ -486,6 +490,7 @@ footer{padding:36px 48px;border-top:1px solid var(--b);position:relative;overflo
   <a href="#contact" class="btn btn-ac" onclick="closeMob()" style="transition-delay:.4s">Book a call →</a>
 </div>
 
+<main id="main">
 <!-- HERO -->
 <section id="hero" style="max-width:100%;">
   <canvas id="net" aria-hidden="true"></canvas>
@@ -576,7 +581,7 @@ footer{padding:36px 48px;border-top:1px solid var(--b);position:relative;overflo
           I founded <strong>Devsphinx</strong> to build exactly that for founders and operations leaders who want to eliminate the highest-cost, lowest-leverage work in their business. My full-stack engineering background is what makes the difference. I don't just design agent architectures — I build them to production standard, integrate them with real systems, and deploy them into real operations. The 9,210 hours on Upwork weren't spent on prototypes.
         </p>
         <div class="story-cta">
-          <a href="https://devsphinx.com" class="btn btn-ac" target="_blank">Visit Devsphinx →</a>
+          <a href="https://devsphinx.com" class="btn btn-ac" target="_blank" rel="noopener">Visit Devsphinx →</a>
           <a href="#contact" class="btn btn-ghost">Book a call</a>
         </div>
       </div>
@@ -654,14 +659,14 @@ footer{padding:36px 48px;border-top:1px solid var(--b);position:relative;overflo
         <h3>Autonomous AI agents</h3>
         <p>Multi-agent systems built on Claude that handle sales outreach, operations workflows, customer support, and internal processes — 24/7 without human input. Research agents, personalisation agents, CRM sync agents, orchestration layers. Not chatbots — systems that think and act.</p>
         <div class="wc-tags"><span class="wc-tag">Claude API</span><span class="wc-tag">Multi-agent</span><span class="wc-tag">MCP</span><span class="wc-tag">Tool use</span><span class="wc-tag">Memory systems</span></div>
-        <a href="https://devsphinx.com#services" class="wc-link" target="_blank">Full details at Devsphinx →</a>
+        <a href="https://devsphinx.com#services" class="wc-link" target="_blank" rel="noopener">Full details at Devsphinx →</a>
       </div>
       <div class="wc spot">
         <div class="wc-n">02 &nbsp;/&nbsp; AI-first software</div>
         <h3>Software built around AI</h3>
         <p>SaaS platforms, internal tools, and vertical applications where AI is the core architecture — not a feature added after launch. Every workflow is designed around what the model should handle. Next.js frontends, Rails or Node backends, and LLM layers that make the software smarter over time.</p>
         <div class="wc-tags"><span class="wc-tag">Next.js</span><span class="wc-tag">React</span><span class="wc-tag">Rails</span><span class="wc-tag">LLM integration</span><span class="wc-tag">RAG</span></div>
-        <a href="https://devsphinx.com#services" class="wc-link" target="_blank">Full details at Devsphinx →</a>
+        <a href="https://devsphinx.com#services" class="wc-link" target="_blank" rel="noopener">Full details at Devsphinx →</a>
       </div>
       <div class="wc spot">
         <div class="wc-n">03 &nbsp;/&nbsp; Integration</div>
@@ -815,7 +820,7 @@ footer{padding:36px 48px;border-top:1px solid var(--b);position:relative;overflo
       <p>Notes on agentic AI, multi-agent architecture, the AI-first software philosophy, and the business of building with Claude. Published on LinkedIn — mirrored here.</p>
     </div>
     <div class="blog-grid" data-stagger>
-      <div class="blog-card spot" onclick="window.open('https://www.linkedin.com/posts/snausher_agenticai-ai-multiagentai-activity-7467575783402663936-QfLm','_blank')">
+      <a class="blog-card spot" href="https://www.linkedin.com/posts/snausher_agenticai-ai-multiagentai-activity-7467575783402663936-QfLm" target="_blank" rel="noopener">
         <div>
           <div class="blog-cat">Agent architecture</div>
           <h3>How Claude multi-agent orchestration actually works — explained without the hype</h3>
@@ -825,8 +830,8 @@ footer{padding:36px 48px;border-top:1px solid var(--b);position:relative;overflo
           <span class="blog-date">June 2026</span>
           <span class="blog-arr">Read →</span>
         </div>
-      </div>
-      <div class="blog-card spot" onclick="window.open('https://www.linkedin.com/posts/snausher_ai-salesautomation-agenticai-activity-7468300531464146945-mzLX','_blank')">
+      </a>
+      <a class="blog-card spot" href="https://www.linkedin.com/posts/snausher_ai-salesautomation-agenticai-activity-7468300531464146945-mzLX" target="_blank" rel="noopener">
         <div>
           <div class="blog-cat">Business strategy</div>
           <h3>Most companies will hire their last SDR this year — and not know it</h3>
@@ -836,8 +841,8 @@ footer{padding:36px 48px;border-top:1px solid var(--b);position:relative;overflo
           <span class="blog-date">June 2026</span>
           <span class="blog-arr">Read →</span>
         </div>
-      </div>
-      <div class="blog-card spot" onclick="window.open('https://www.linkedin.com/posts/snausher_aifirst-ai-saas-activity-7474823559945588736-vUaD','_blank')">
+      </a>
+      <a class="blog-card spot" href="https://www.linkedin.com/posts/snausher_aifirst-ai-saas-activity-7474823559945588736-vUaD" target="_blank" rel="noopener">
         <div>
           <div class="blog-cat">AI-first philosophy</div>
           <h3>Why "adding AI to your software" is the wrong frame entirely</h3>
@@ -847,11 +852,11 @@ footer{padding:36px 48px;border-top:1px solid var(--b);position:relative;overflo
           <span class="blog-date">June 2026</span>
           <span class="blog-arr">Read →</span>
         </div>
-      </div>
+      </a>
     </div>
     <div class="blog-cta fu fd2">
       <p>Posts publish on LinkedIn first. Follow along as I build in public.</p>
-      <a href="http://linkedin.com/in/snausher/" target="_blank" class="btn btn-ghost">Follow on LinkedIn &nbsp;→</a>
+      <a href="http://linkedin.com/in/snausher/" target="_blank" rel="noopener" class="btn btn-ghost">Follow on LinkedIn &nbsp;→</a>
     </div>
   </div>
 </section>
@@ -876,7 +881,7 @@ footer{padding:36px 48px;border-top:1px solid var(--b);position:relative;overflo
         <div class="tb-featured-foot">
           <div class="tb-avatar tb-av-ar">AR</div>
           <div>
-            <div class="tb-name"><a href="https://www.linkedin.com/in/alexandra-radanovich" target="_blank" style="color:inherit;text-decoration:none;">Alex Radanovich</a></div>
+            <div class="tb-name"><a href="https://www.linkedin.com/in/alexandra-radanovich" target="_blank" rel="noopener" style="color:inherit;text-decoration:none;">Alex Radanovich</a></div>
             <div class="tb-role">VP, PM &amp; Operations · Spherical · 5-yr · 3,027 hrs</div>
           </div>
         </div>
@@ -892,7 +897,7 @@ footer{padding:36px 48px;border-top:1px solid var(--b);position:relative;overflo
       <div class="tb-cell tb-cta spot">
         <div class="tb-eyebrow">Full history</div>
         <p>Every contract, every rating — nothing cherry-picked.</p>
-        <a href="https://www.upwork.com/freelancers/~013284928954bf6f26" target="_blank">View all on Upwork →</a>
+        <a href="https://www.upwork.com/freelancers/~013284928954bf6f26" target="_blank" rel="noopener">View all on Upwork →</a>
       </div>
 
       <div class="tb-cell tb-half tb-half-a spot">
@@ -985,7 +990,7 @@ footer{padding:36px 48px;border-top:1px solid var(--b);position:relative;overflo
       </div>
       <div class="founder-cta">
         <a href="#contact" class="btn btn-ac">Book a call with me &nbsp;→</a>
-        <a href="http://linkedin.com/in/snausher/" target="_blank" class="btn btn-ghost">LinkedIn</a>
+        <a href="http://linkedin.com/in/snausher/" target="_blank" rel="noopener" class="btn btn-ghost">LinkedIn</a>
       </div>
     </div>
   </div>
@@ -1010,10 +1015,10 @@ footer{padding:36px 48px;border-top:1px solid var(--b);position:relative;overflo
       <h2 class="split">Let's talk about what you're building.</h2>
       <p>Whether it's an AI agent system, an AI-first product, or you're not sure which yet — start with a free 30-minute call. I'll listen and tell you honestly what the right approach looks like.</p>
       <div class="c-meta">
-        <div class="c-row"><span class="c-lbl">Agency</span><span class="c-val"><a href="https://devsphinx.com" target="_blank">devsphinx.com</a></span></div>
+        <div class="c-row"><span class="c-lbl">Agency</span><span class="c-val"><a href="https://devsphinx.com" target="_blank" rel="noopener">devsphinx.com</a></span></div>
         <div class="c-row"><span class="c-lbl">Email</span><span class="c-val"><a href="mailto:hello@devsphinx.com">hello@devsphinx.com</a></span></div>
-        <div class="c-row"><span class="c-lbl">LinkedIn</span><span class="c-val"><a href="http://linkedin.com/in/snausher/" target="_blank">linkedin.com/in/snausher</a></span></div>
-        <div class="c-row"><span class="c-lbl">Upwork</span><span class="c-val"><a href="https://www.upwork.com/freelancers/~013284928954bf6f26" target="_blank">Top Rated Plus profile</a></span></div>
+        <div class="c-row"><span class="c-lbl">LinkedIn</span><span class="c-val"><a href="http://linkedin.com/in/snausher/" target="_blank" rel="noopener">linkedin.com/in/snausher</a></span></div>
+        <div class="c-row"><span class="c-lbl">Upwork</span><span class="c-val"><a href="https://www.upwork.com/freelancers/~013284928954bf6f26" target="_blank" rel="noopener">Top Rated Plus profile</a></span></div>
         <div class="c-row"><span class="c-lbl">Duration</span><span class="c-val">30 min · free · no obligation</span></div>
       </div>
     </div>
@@ -1025,6 +1030,7 @@ footer{padding:36px 48px;border-top:1px solid var(--b);position:relative;overflo
     </div>
   </div>
 </section>
+</main>
 
 <!-- FOOTER -->
 <footer>
@@ -1049,7 +1055,7 @@ footer{padding:36px 48px;border-top:1px solid var(--b);position:relative;overflo
         <li><a href="#projects">Projects</a></li>
         <li><a href="#upwork">Track record</a></li>
         <li><a href="#blog">Writing</a></li>
-        <li><a href="https://devsphinx.com" target="_blank">Devsphinx →</a></li>
+        <li><a href="https://devsphinx.com" target="_blank" rel="noopener">Devsphinx →</a></li>
       </ul>
     </div>
     <div class="foot-col">
@@ -1057,16 +1063,16 @@ footer{padding:36px 48px;border-top:1px solid var(--b);position:relative;overflo
       <ul>
         <li><a href="#contact">Book a call</a></li>
         <li><a href="mailto:hello@devsphinx.com">Email</a></li>
-        <li><a href="http://linkedin.com/in/snausher/" target="_blank">LinkedIn</a></li>
-        <li><a href="https://www.upwork.com/freelancers/~013284928954bf6f26" target="_blank">Upwork</a></li>
+        <li><a href="http://linkedin.com/in/snausher/" target="_blank" rel="noopener">LinkedIn</a></li>
+        <li><a href="https://www.upwork.com/freelancers/~013284928954bf6f26" target="_blank" rel="noopener">Upwork</a></li>
       </ul>
     </div>
   </div>
   <div class="foot-bottom">
     <span class="foot-copy">© 2026 Salman Nausher. All rights reserved.</span>
     <div class="foot-social">
-      <a href="http://linkedin.com/in/snausher/" target="_blank">LinkedIn</a>
-      <a href="https://devsphinx.com" target="_blank">Devsphinx</a>
+      <a href="http://linkedin.com/in/snausher/" target="_blank" rel="noopener">LinkedIn</a>
+      <a href="https://devsphinx.com" target="_blank" rel="noopener">Devsphinx</a>
       <a href="mailto:hello@devsphinx.com">Email</a>
     </div>
   </div>
