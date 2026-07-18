@@ -1,0 +1,36 @@
+---
+---
+<section id="video-testimonial" class="section">
+  <div class="s-in">
+    <div class="s-hd fu">
+      <span class="eyebrow">In their words</span>
+      <h2 class="split">Hear it directly<br>from a client.</h2>
+      <p>Two minutes, unscripted — Shaun on what it was like working together.</p>
+    </div>
+    <div class="vt-card fu fd1">
+      <div class="vt-player" id="vtPlayer" data-video-id="cNoxcKFaYqU">
+        <span class="vt-tag">▶ &nbsp;Video testimonial</span>
+        <img class="vt-thumb" src="https://img.youtube.com/vi/cNoxcKFaYqU/maxresdefault.jpg" onerror="this.onerror=null;this.src='https://img.youtube.com/vi/cNoxcKFaYqU/hqdefault.jpg';" alt="Video testimonial from Shaun Hughston">
+        <button class="vt-play" aria-label="Play video testimonial from Shaun Hughston"></button>
+      </div>
+      <div class="vt-foot">
+        <div class="tb-avatar tb-av-sh">SH</div>
+        <div>
+          <div class="tb-name">Shaun Hughston</div>
+          <div class="tb-role">CEO &amp; Founder, Agility Automation</div>
+        </div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<script>
+  const player = document.getElementById('vtPlayer');
+  if (player) {
+    player.addEventListener('click', function loadVideo() {
+      const id = player.dataset.videoId;
+      player.innerHTML = `<iframe class="vt-iframe" src="https://www.youtube-nocookie.com/embed/${id}?autoplay=1&rel=0" title="Client video testimonial" allow="autoplay; encrypted-media; picture-in-picture" allowfullscreen></iframe>`;
+      player.removeEventListener('click', loadVideo);
+    }, {once: true});
+  }
+</script>

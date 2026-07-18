@@ -1,0 +1,23 @@
+{
+  "version": "0.0.1",
+  "configurations": [
+    {
+      "name": "portfolio",
+      "runtimeExecutable": "/Users/salmannausher/.nvm/versions/node/v20.19.4/bin/node",
+      "runtimeArgs": ["node_modules/astro/astro.js", "dev", "--port", "4173"],
+      "port": 4173
+    },
+    {
+      "name": "portfolio-prod-check",
+      "runtimeExecutable": "/Users/salmannausher/.nvm/versions/node/v20.19.4/bin/node",
+      "runtimeArgs": ["node_modules/astro/astro.js", "preview", "--port", "4175"],
+      "port": 4175
+    },
+    {
+      "name": "scratchpad-preview",
+      "runtimeExecutable": "python3",
+      "runtimeArgs": ["-m", "http.server", "4174", "--directory", "/private/tmp/claude-501/-Users-salmannausher-Desktop-projetcs-salman-portfolio/a1d56281-545a-4fcb-8e06-e80853b9dec3/scratchpad"],
+      "port": 4174
+    }
+  ]
+}

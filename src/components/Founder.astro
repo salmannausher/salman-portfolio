@@ -1,0 +1,55 @@
+---
+---
+<section id="founder" class="section">
+  <div class="s-in founder-wrap">
+    <div class="founder-photo-col fu">
+      <div class="founder-card" id="founderCard">
+        <div class="founder-photo"><img src="/founder.jpg" alt="Salman Nausher, founder of Devsphinx" loading="lazy"></div>
+        <div class="founder-badge">Founder &nbsp;·&nbsp; AI Systems Architect</div>
+      </div>
+      <p class="founder-caption">Every project. Every line. One person accountable.</p>
+    </div>
+    <div class="founder-text-col fu fd1">
+      <span class="eyebrow eyebrow-ac">Who you'll work with</span>
+      <h2 class="split">You talk to the<br>person who builds it.</h2>
+      <p class="founder-p" style="margin-top:24px;">
+        There's no team behind this page pretending to be bigger than it is. When you book a call, <strong>you're talking to me</strong> — the person who scopes the system, designs the architecture, writes the code, and answers for the result. No account managers, no hand-offs, no junior dev learning on your budget.
+      </p>
+      <p class="founder-p">
+        I've spent four years shipping production software, and the last couple deep in the Claude ecosystem — agent architectures, MCP integrations, AI-first product design. I take on a small number of builds at a time, so everything that ships carries the standard this page promises.
+      </p>
+      <div class="founder-stats" data-stagger>
+        <div class="fs-cell"><div class="fs-num">24</div><div class="fs-lbl">Upwork contracts, start to finish</div></div>
+        <div class="fs-cell"><div class="fs-num">4.9<span style="color:var(--ac);">★</span></div><div class="fs-lbl">Average client rating</div></div>
+        <div class="fs-cell"><div class="fs-num">100<span style="color:var(--ac);">%</span></div><div class="fs-lbl">Job success score</div></div>
+      </div>
+      <div class="founder-sign">
+        <div class="founder-sign-name">Salman Nausher</div>
+        <div class="founder-sign-role">Founder, Devsphinx</div>
+      </div>
+      <div class="founder-cta">
+        <a href="#contact" class="btn btn-ac">Book a call with me &nbsp;→</a>
+        <a href="http://linkedin.com/in/snausher/" target="_blank" rel="noopener" class="btn btn-ghost">LinkedIn</a>
+      </div>
+    </div>
+  </div>
+</section>
+
+<script>
+  const RM = window.matchMedia('(prefers-reduced-motion: reduce)').matches;
+
+  /* ── Founder photo card tilt ── */
+  if (!RM && matchMedia('(hover:hover) and (pointer:fine)').matches) {
+    const fCard = document.getElementById('founderCard');
+    if (fCard) {
+      fCard.addEventListener('mousemove', e => {
+        const r = fCard.getBoundingClientRect();
+        const px = (e.clientX - r.left) / r.width - .5, py = (e.clientY - r.top) / r.height - .5;
+        fCard.style.transform = `perspective(900px) rotateX(${(-py * 10).toFixed(2)}deg) rotateY(${(px * 12).toFixed(2)}deg)`;
+      });
+      fCard.addEventListener('mouseleave', () => {
+        fCard.style.transform = 'perspective(900px) rotateX(0deg) rotateY(0deg)';
+      });
+    }
+  }
+</script>

@@ -1,0 +1,126 @@
+---
+---
+<section id="hero" style="max-width:100%;">
+  <canvas id="net" aria-hidden="true"></canvas>
+  <div class="hero-l">
+    <div class="hero-label">
+      <div class="hero-label-dot"></div>
+      AI Systems Builder &nbsp;·&nbsp; Founder @ Devsphinx
+    </div>
+    <h1 class="hero-h1">
+      <span class="rl"><span style="animation-delay:.1s">Salman</span></span><br>
+      <span class="rl"><span class="hl" style="animation-delay:.22s">Nausher.</span></span>
+    </h1>
+    <div class="hero-h1-sub">
+      <span class="rl"><span style="animation-delay:.34s">I build software</span></span><br>
+      <span class="rl"><span style="animation-delay:.44s">that&nbsp;<span class="rot-mask"><span class="rot" id="rotWord">thinks.</span></span></span></span>
+    </div>
+    <p class="hero-desc fu fd2">
+      I design and deploy <strong>autonomous AI agent systems</strong> and <strong>AI-first software products</strong> — where intelligence is the foundation, not a feature bolted on later.<br><br>
+      Previously a full-stack engineer with $200K+ delivered on Upwork. Now an AI systems architect running <strong>Devsphinx</strong>.
+    </p>
+    <div class="hero-btns fu fd3">
+      <a href="#contact" class="btn btn-ac">Book a discovery call &nbsp;→</a>
+      <a href="#story" class="btn btn-ghost">Read my story</a>
+    </div>
+  </div>
+  <div class="hero-r" data-stagger>
+    <div class="h-stat spot">
+      <div class="hs-num">$<span class="cnt" data-to="200">200</span><em>K+</em></div>
+      <div class="hs-lbl">Total earned · Upwork</div>
+      <div class="hs-badge">Verified</div>
+    </div>
+    <div class="h-stat spot">
+      <div class="hs-num"><span class="cnt" data-to="9210" data-fmt="comma">9,210</span></div>
+      <div class="hs-lbl">Hours logged · Upwork</div>
+      <div class="hs-badge">Verified</div>
+    </div>
+    <div class="h-stat spot">
+      <div class="hs-num"><span class="cnt" data-to="4.9" data-dec="1">4.9</span><em>★</em></div>
+      <div class="hs-lbl">Rating · 24 jobs</div>
+      <div class="hs-badge">Top Rated Plus</div>
+    </div>
+    <div class="h-stat spot">
+      <div class="hs-num"><span class="cnt" data-to="100">100</span><em>%</em></div>
+      <div class="hs-lbl">Job success score</div>
+      <div class="hs-badge">Verified</div>
+    </div>
+  </div>
+  <div class="hero-scroll"><div class="hero-scroll-line"></div>Scroll</div>
+</section>
+
+<script>
+  const RM = window.matchMedia('(prefers-reduced-motion: reduce)').matches;
+
+  /* ── Rotating hero word ── */
+  if (!RM) {
+    const words = ['thinks.', 'reasons.', 'acts.', 'ships.'];
+    const rot = document.getElementById('rotWord');
+    let i = 0;
+    setInterval(() => {
+      rot.classList.add('out');
+      setTimeout(() => {
+        i = (i + 1) % words.length;
+        rot.textContent = words[i];
+        rot.classList.remove('out'); rot.classList.add('in');
+        void rot.offsetWidth; // reflow so the .in position applies before sliding up
+        rot.classList.remove('in'); rot.style.transition = '';
+      }, 460);
+    }, 2600);
+  }
+
+  /* ── Hero neural-network canvas ── */
+  if (!RM) {
+    const cv = document.getElementById('net'), cx = cv.getContext('2d');
+    const hero = document.getElementById('hero');
+    let W, H, pts = [], mouse = {x: -9999, y: -9999}, running = false, raf;
+    const DPR = Math.min(devicePixelRatio || 1, 2);
+    function size() {
+      W = hero.offsetWidth; H = hero.offsetHeight;
+      cv.width = W * DPR; cv.height = H * DPR; cv.style.width = W + 'px'; cv.style.height = H + 'px';
+      cx.setTransform(DPR, 0, 0, DPR, 0, 0);
+      const n = Math.min(Math.floor(W * H / 26000), 70);
+      pts = Array.from({length: n}, () => ({
+        x: Math.random() * W, y: Math.random() * H,
+        vx: (Math.random() - .5) * .32, vy: (Math.random() - .5) * .32,
+        r: Math.random() * 1.5 + .6
+      }));
+    }
+    function draw() {
+      cx.clearRect(0, 0, W, H);
+      for (const p of pts) {
+        p.x += p.vx; p.y += p.vy;
+        if (p.x < 0 || p.x > W) p.vx *= -1;
+        if (p.y < 0 || p.y > H) p.vy *= -1;
+        cx.beginPath(); cx.arc(p.x, p.y, p.r, 0, 7);
+        cx.fillStyle = 'rgba(240,238,230,.16)'; cx.fill();
+      }
+      for (let i = 0; i < pts.length; i++) {
+        for (let j = i + 1; j < pts.length; j++) {
+          const dx = pts[i].x - pts[j].x, dy = pts[i].y - pts[j].y, d = dx * dx + dy * dy;
+          if (d < 15000) {
+            cx.beginPath(); cx.moveTo(pts[i].x, pts[i].y); cx.lineTo(pts[j].x, pts[j].y);
+            cx.strokeStyle = `rgba(212,80,26,${.11 * (1 - d / 15000)})`; cx.lineWidth = 1; cx.stroke();
+          }
+        }
+        const dx = pts[i].x - mouse.x, dy = pts[i].y - mouse.y, d = dx * dx + dy * dy;
+        if (d < 26000) {
+          cx.beginPath(); cx.moveTo(pts[i].x, pts[i].y); cx.lineTo(mouse.x, mouse.y);
+          cx.strokeStyle = `rgba(212,80,26,${.2 * (1 - d / 26000)})`; cx.lineWidth = 1; cx.stroke();
+        }
+      }
+      if (running) raf = requestAnimationFrame(draw);
+    }
+    hero.addEventListener('mousemove', e => {
+      const r = hero.getBoundingClientRect();
+      mouse.x = e.clientX - r.left; mouse.y = e.clientY - r.top;
+    });
+    hero.addEventListener('mouseleave', () => { mouse.x = -9999; mouse.y = -9999; });
+    new IntersectionObserver(([e]) => {
+      running = e.isIntersecting;
+      if (running) raf = requestAnimationFrame(draw); else cancelAnimationFrame(raf);
+    }).observe(hero);
+    window.addEventListener('resize', size, {passive: true});
+    size();
+  }
+</script>
